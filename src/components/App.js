@@ -2,6 +2,7 @@ import '../styles/App.css';
 import firebase from '../config/firebase.js';
 import LandingPage from './LandingPage.js';
 import MainForm from './MainForm.js';
+import Goal from './Goal.js';
 import { useEffect, useState } from 'react';
 
 // const apiKey = '';
@@ -21,14 +22,11 @@ function App() {
       const newDataArray = [];
       // this is to see the goals in firebase
       const data = response.val();
-      console.log(data);
       for (let key in data) {
-        newDataArray.push({key: key, objective: data[key]});
+        newDataArray.push({key: key, objective: data[key], completed: false})
+        console.log(newDataArray);
       }
-      // console logging the value to the screen
       setGoals(newDataArray) 
-      // console.log(newDataArray[0].key);
-      // console.log(newDataArray[0]);
     })
   }, []);
 
@@ -47,8 +45,28 @@ function App() {
     setUserInput('');
   }
 
-  const handleRemoveGoal = (goal) => {
-    dbRef.child(goal).remove();
+  const handleCompleteGoal = (goalID) => {
+    // console.log(goalID);
+    // console.log(dbRef);
+    // // dbRef.child(`${goalID}`).update({completed:true});
+
+    dbRef.on('value', (snapshot) => {
+      // console logged the unique IDs with the values associated
+      console.log(snapshot.val());
+      
+      // this console logs the value of the snapshot when clicked
+      const currentText = snapshot.val()[`${goalID}`];
+      const completedText = `${currentText} completed!`;
+      console.log(completedText);
+    })
+    
+
+
+  }
+
+  const handleRemoveGoal = (goalID) => {
+    // This is the unique ID associated with the goal
+    dbRef.child(goalID).remove();
   }
 
   return (
@@ -56,27 +74,20 @@ function App() {
       <LandingPage />
 
       <div className="wrapper">
+
         <MainForm 
           textInput={userInput}
           inputResponse={handleUserInput}
           submitResponse={handleSubmitClick}
         />
 
-        <ul className="healthChecklist">
-          {
-            goals.map((goal, index) => {
-              console.log(goal, index);
-              return(
-                <li key={goal.key}>
-                  <p>Goal {index + 1}: {goal.objective}</p>
-                  <button onClick={() => {handleRemoveGoal(goal.key)}}>Remove Goal</button>
-                </li>
-              )
-            })
-          }
-        </ul>
-      </div>
+        <Goal 
+          goal={goals}
+          completeGoal={handleCompleteGoal}
+          removeGoal={handleRemoveGoal}
+        />
 
+      </div>
     </>
   );
 }
