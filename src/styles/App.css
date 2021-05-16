@@ -22,7 +22,7 @@ ul {
 }
 
 li {
-  border: 1px dotted black;
+  /* border: 1px dotted black; */
   padding: 2rem;
   min-height: 100px;
 }
@@ -44,4 +44,16 @@ li {
   /* border: 5px solid red; */
   /* border-radius: 40px; */
   min-height: 100px;
+}
+
+.completed {
+  border: 1px solid red;
+}
+
+.hide {
+  display: none;
+}
+
+.unhide {
+  display: inline-block;
 }

@@ -11,10 +11,18 @@ import { useEffect, useState } from 'react';
 function App() {
   const [ goals, setGoals ] = useState([]);
   const [ userInput, setUserInput ] = useState('');
-  const dbRef = firebase.database().ref();
-  
+  const snapshotToArray = snapshot => Object.entries(snapshot).map(e => {
+    console.log(e);
+    return (
+    {
+      id: e[0],
+      objective: e[1].objective, 
+      completed: e[1].completed
+    }) 
+    });
+  const dbRef = firebase.database().ref(`/goals/`);
+  // console.log(dbRef);
   useEffect(() => {
-    console.log('This is from useEffect hook');
 
     // referencing our firebase database
     dbRef.on('value', (response) => {
@@ -22,11 +30,9 @@ function App() {
       const newDataArray = [];
       // this is to see the goals in firebase
       const data = response.val();
-      for (let key in data) {
-        newDataArray.push({key: key, objective: data[key], completed: false})
-        console.log(newDataArray);
-      }
-      setGoals(newDataArray) 
+      const fromData = data && snapshotToArray(data);
+      console.log(fromData);
+      setGoals(fromData); 
     })
   }, []);
 
@@ -40,28 +46,14 @@ function App() {
   const handleSubmitClick = (event) => {
     event.preventDefault();
     // this is submitting the goal to be appended to the component
-    dbRef.push(userInput);
+    dbRef.push({ objective: userInput, completed: false });
     // Resetting the input value
     setUserInput('');
   }
-
+  
   const handleCompleteGoal = (goalID) => {
-    // console.log(goalID);
-    // console.log(dbRef);
-    // // dbRef.child(`${goalID}`).update({completed:true});
-
-    dbRef.on('value', (snapshot) => {
-      // console logged the unique IDs with the values associated
-      console.log(snapshot.val());
-      
-      // this console logs the value of the snapshot when clicked
-      const currentText = snapshot.val()[`${goalID}`];
-      const completedText = `${currentText} completed!`;
-      console.log(completedText);
-    })
-    
-
-
+    console.log(goalID)
+    dbRef.child(goalID).update({completed:true})
   }
 
   const handleRemoveGoal = (goalID) => {
@@ -82,7 +74,7 @@ function App() {
         />
 
         <Goal 
-          goal={goals}
+          goals={goals}
           completeGoal={handleCompleteGoal}
           removeGoal={handleRemoveGoal}
         />
