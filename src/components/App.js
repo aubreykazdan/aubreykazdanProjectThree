@@ -9,12 +9,12 @@ import { useEffect, useState } from 'react';
 
 
 function App() {
-  const [ goals, setGoals ] = useState([]);
+  const [ goalsArray, setGoalsArray ] = useState([]);
   const [ userInput, setUserInput ] = useState('');
+  const [ isCompleted, setIsCompleted ] = useState(false)
   const dbRef = firebase.database().ref();
   
   useEffect(() => {
-    console.log('This is from useEffect hook');
 
     // referencing our firebase database
     dbRef.on('value', (response) => {
@@ -23,10 +23,10 @@ function App() {
       // this is to see the goals in firebase
       const data = response.val();
       for (let key in data) {
-        newDataArray.push({key: key, objective: data[key], completed: false})
+        newDataArray.push({key: key, objective: data[key], completed: isCompleted})
         console.log(newDataArray);
       }
-      setGoals(newDataArray) 
+      setGoalsArray(newDataArray) 
     })
   }, []);
 
@@ -47,21 +47,22 @@ function App() {
 
   const handleCompleteGoal = (goalID) => {
     // console.log(goalID);
-    // console.log(dbRef);
-    // // dbRef.child(`${goalID}`).update({completed:true});
+    // dbRef.child(`${goalID}`).update({completed:true});
 
     dbRef.on('value', (snapshot) => {
-      // console logged the unique IDs with the values associated
+      // console logged the unique IDs with the values associatedd
       console.log(snapshot.val());
       
       // this console logs the value of the snapshot when clicked
       const currentText = snapshot.val()[`${goalID}`];
       const completedText = `${currentText} completed!`;
-      console.log(completedText);
     })
-    
 
-
+    const completedGoal = goalsArray.filter((goal) => {
+      return goal.key === goalID
+    })
+    !completedGoal[0].completed ? setIsCompleted(true) : setIsCompleted(false); 
+    console.log(completedGoal);
   }
 
   const handleRemoveGoal = (goalID) => {
@@ -82,7 +83,7 @@ function App() {
         />
 
         <Goal 
-          goal={goals}
+          goal={goalsArray}
           completeGoal={handleCompleteGoal}
           removeGoal={handleRemoveGoal}
         />

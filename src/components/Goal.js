@@ -1,5 +1,5 @@
 function Goal({goal, completeGoal, removeGoal}) {
-  console.log(goal.objective);
+  // console.log(goal.objective);
     return (
       <div className="goalContainer">
         <ul className="healthChecklist">
@@ -8,10 +8,14 @@ function Goal({goal, completeGoal, removeGoal}) {
             console.log(goal, index);
             return(
               <li key={goal.key}>
+
                 <p>Goal {index + 1}: {goal.objective}</p>
+
                 <button onClick={() => {removeGoal(goal.key)}}>Remove Goal</button>
+
                 <button onClick={() => {completeGoal(goal.key)}}
                 >Complete Goal</button>
+                
               </li>
             )
           })
