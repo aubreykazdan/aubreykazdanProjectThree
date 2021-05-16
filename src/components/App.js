@@ -1,6 +1,7 @@
 import '../styles/App.css';
 import firebase from '../config/firebase.js';
-import header from '../components/header.js';
+import LandingPage from './LandingPage.js';
+import MainForm from './MainForm.js';
 import { useEffect, useState } from 'react';
 
 // const apiKey = '';
@@ -52,15 +53,14 @@ function App() {
 
   return (
     <>
-      <div className='header'>
-        <h1>Mental Health Goals</h1>
+      <LandingPage />
 
-        <form action="submit">
-          <label htmlFor="">Your Goals Go Here</label>
-          <input value={userInput} type="text" onChange={handleUserInput} />
-          <button onClick={handleSubmitClick}>Add Goal</button>
-        </form>
-
+      <div className="wrapper">
+        <MainForm 
+          textInput={userInput}
+          inputResponse={handleUserInput}
+          submitResponse={handleSubmitClick}
+        />
 
         <ul className="healthChecklist">
           {
@@ -75,9 +75,6 @@ function App() {
             })
           }
         </ul>
-
-        
-        
       </div>
 
     </>
