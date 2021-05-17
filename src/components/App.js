@@ -27,9 +27,6 @@ function App() {
 
     // referencing our firebase database
     dbRef.on('value', (response) => {
-      // Initializing an empty array
-      const newDataArray = [];
-      // this is to see the goals in firebase
       const data = response.val();
       const fromData = data && snapshotToArray(data);
       console.log(fromData);
