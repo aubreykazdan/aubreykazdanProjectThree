@@ -24,8 +24,8 @@ function Goal({ goals, completeGoal, removeGoal }) {
                 <ActivityForm />
               </li>
             )
-        }):<p>There are no goals yet</p>
-
+        }):<p className="placeholder">Your goals will appear here</p>
+      }
       </ul>
     </section>
   )

@@ -1,10 +1,10 @@
 function ActivityForm() {
     return (
-        <div className="activityForm">
-            <form action="">
+        <div className="activityFormContainer">
+            <form className="activityForm" action="">
                 <label htmlFor=""></label>
                 <input placeholder="Activities go here" type="text" />
-                <button>Text Input</button>
+                <button>Add Activity</button>
             </form>
         </div>
     )

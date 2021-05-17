@@ -65,8 +65,6 @@ function App() {
       <LandingPage />
 
       <main className="wrapper">
-
-
         <MainForm 
           textInput={userInput}
           inputResponse={handleUserInput}
