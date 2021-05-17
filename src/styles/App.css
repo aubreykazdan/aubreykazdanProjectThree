@@ -28,6 +28,11 @@ main {
   justify-content: center;
 }
 
+header {
+  display: flex;
+  justify-content: flex-start;
+}
+
 h1 {
   font-size: 4rem;
 }
@@ -38,7 +43,6 @@ ul {
   padding: 0;
 }
 
-
 li {
   background: rgba(248, 249, 249, 0.8);
   border-radius: 40px;
@@ -46,6 +50,15 @@ li {
   margin: 3rem;
   min-height: 100px;
   min-width: 380px;
+}
+
+footer {
+  padding-top: 4rem;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-self: flex-end;
+  color: black;
 }
 
 input {
@@ -70,36 +83,39 @@ button:focus {
   cursor: pointer;
 }
 
-.landingPage,
+.landingPage {
+  margin-left: 9rem;
+}
+
+.instructions,
 .mainForm {
   background-color: rgba(221, 206, 226, 0.8);
   border-radius: 20px;
 }
 
-.landingPage {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 2rem 4rem;
+.instructions,
+.mainForm {
+  max-width: 400px;
+  left: 0;
 }
 
-footer {
-  padding-top: 4rem;
-  height: 10vh;
-  display: flex;
-  justify-content: center;
-  align-self: flex-end;
-  color: black;
+
+.instructions {
+  padding: 2rem;
+  position: sticky;
+  top: 3rem;
+}
+
+.instructions:nth-of-type(2) {
+  top: 18rem;
 }
 
 .mainForm {
   position: sticky;
-  top: 3rem;
-  left: 0;
+  top: 31rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 2rem;
   padding: 2rem 2rem;
   max-width: 1000px;
 }

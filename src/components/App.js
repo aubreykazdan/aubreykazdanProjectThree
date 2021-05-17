@@ -62,7 +62,9 @@ function App() {
 
   return (
     <>
-      <LandingPage />
+      <header className="wrapper" >
+        <LandingPage />
+      </header>
 
       <main className="wrapper">
         <MainForm 
@@ -85,3 +87,7 @@ function App() {
 }
 
 export default App;
+
+// ERROR HANDLING LIST
+  // (1) MAKE SURE ADD GOAL CANNOT BE CLICKED WHEN TEXT INPUT IS EMPTY
+  // (2) 
