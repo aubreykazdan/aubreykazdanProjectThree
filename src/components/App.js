@@ -66,6 +66,7 @@ function App() {
 
       <main className="wrapper">
 
+
         <MainForm 
           textInput={userInput}
           inputResponse={handleUserInput}
@@ -76,9 +77,8 @@ function App() {
           goals={goals}
           completeGoal={handleCompleteGoal}
           removeGoal={handleRemoveGoal}
+          // <ActivityForm /> exists here
         />
-
-
       </main>
 
       <footer>Created by Aubrey Kazdan - Juno College 2021</footer>

@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import ActivityForm from "./ActivityForm.js";
 
 function Goal({ goals, completeGoal, removeGoal }) {
   return (
-    <div className="goalContainer">
+    <section className="goalContainer">
       <ul className="healthChecklist">
         {
           // ASK INSTRUCTORS ABOUT THIS
@@ -17,16 +17,17 @@ function Goal({ goals, completeGoal, removeGoal }) {
 
                 <button className={goal.completed ? 'hide' : 'unhide'} onClick={() => {
                   completeGoal(goal.id)
-                }
+                  }
                 }
                 >Complete Goal</button>
 
+                <ActivityForm />
               </li>
             )
-          }):null
-        }
+        }):<p>There are no goals yet</p>
+
       </ul>
-    </div>
+    </section>
   )
 }
 

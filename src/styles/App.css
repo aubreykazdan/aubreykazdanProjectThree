@@ -40,6 +40,7 @@ ul {
   padding: 0;
 }
 
+
 li {
   background: rgba(248, 249, 249, 0.8);
   border-radius: 40px;
@@ -47,7 +48,7 @@ li {
   margin: 3rem;
   min-height: 100px;
   min-width: 380px;
-}
+} */
 
 button {
   border: 3px solid rgba(0, 0, 0, 1);
@@ -98,11 +99,6 @@ footer {
   max-width: 1000px;
 }
 
-.mainForm label {
-  font-size: 3rem;
-  margin-bottom: 1.5rem;
-}
-
 .addGoal {
   margin-top: 1.5rem;
 }
@@ -117,6 +113,16 @@ footer {
   background-size: cover;
 }
 
+.completed,
+.uncompleted {
+  background: rgba(248, 249, 249, 0.9);
+  border-radius: 20px;
+  padding: 2rem 3rem;
+  margin: 3rem;
+  min-height: 100px;
+  min-width: 380px;
+}
+
 .completed {
   border: 1px solid red;
 }
@@ -127,4 +133,13 @@ footer {
 
 .unhide {
   display: inline-block;
+}
+
+.activityForm {
+  background: rgba(248, 249, 249, 0.9);
+  border-radius: 20px;
+  padding: 2rem 3rem;
+  margin: 3rem;
+  min-height: 100px;
+  min-width: 380px;
 }
