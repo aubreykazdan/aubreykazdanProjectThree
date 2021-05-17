@@ -66,7 +66,7 @@ function App() {
     <>
       <LandingPage />
 
-      <div className="wrapper">
+      <div className="goalComponentContainer wrapper">
 
         <MainForm 
           textInput={userInput}
@@ -78,7 +78,9 @@ function App() {
           goals={goals}
           completeGoal={handleCompleteGoal}
           removeGoal={handleRemoveGoal}
+          // <ActivityForm /> exists here
         />
+        
 
         <footer>Created by Aubrey Kazdan - Juno College 2021</footer>
 
