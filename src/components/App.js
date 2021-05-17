@@ -1,4 +1,5 @@
 import '../styles/App.css';
+// import '../assets'
 import firebase from '../config/firebase.js';
 import LandingPage from './LandingPage.js';
 import MainForm from './MainForm.js';
@@ -78,6 +79,8 @@ function App() {
           completeGoal={handleCompleteGoal}
           removeGoal={handleRemoveGoal}
         />
+
+        <footer>Created by Aubrey Kazdan - Juno College 2021</footer>
 
       </div>
     </>
