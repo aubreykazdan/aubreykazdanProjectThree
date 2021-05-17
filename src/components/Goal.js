@@ -25,7 +25,7 @@ function Goal({ goals, completeGoal, removeGoal }) {
               </li>
             )
         }):<p>There are no goals yet</p>
-      }
+
       </ul>
     </section>
   )

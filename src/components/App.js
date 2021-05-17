@@ -40,7 +40,6 @@ function App() {
   const handleUserInput = (event) => {
     let userInput = event.target.value;
     setUserInput(userInput);
-    console.log(userInput);
   }
 
   // submitting the data to Firebase
@@ -53,7 +52,6 @@ function App() {
   }
   
   const handleCompleteGoal = (goalID) => {
-    console.log(goalID)
     dbRef.child(goalID).update({completed:true})
   }
 
@@ -66,7 +64,8 @@ function App() {
     <>
       <LandingPage />
 
-      <div className="goalComponentContainer wrapper">
+      <main className="wrapper">
+
 
         <MainForm 
           textInput={userInput}
@@ -80,9 +79,7 @@ function App() {
           removeGoal={handleRemoveGoal}
           // <ActivityForm /> exists here
         />
-        
-
-      </div>
+      </main>
 
       <footer>Created by Aubrey Kazdan - Juno College 2021</footer>
     </>
