@@ -82,9 +82,9 @@ function App() {
         />
         
 
-        <footer>Created by Aubrey Kazdan - Juno College 2021</footer>
-
       </div>
+
+      <footer>Created by Aubrey Kazdan - Juno College 2021</footer>
     </>
   );
 }
