@@ -12,12 +12,14 @@ import { useEffect, useState } from 'react';
 function App() {
   const [ goals, setGoals ] = useState([]);
   const [ userInput, setUserInput ] = useState('');
+  const [ dateInput, setDateInput ] = useState('');
   const snapshotToArray = snapshot => Object.entries(snapshot).map(e => {
     console.log(e);
     return (
     {
       id: e[0],
-      objective: e[1].objective, 
+      objective: e[1].objective,
+      date: e[1].date, 
       completed: e[1].completed
     }) 
     });
@@ -36,14 +38,21 @@ function App() {
 
   const handleUserInput = (event) => {
     let userInput = event.target.value;
+    console.log(userInput);
     setUserInput(userInput);
+  }
+
+  const handleDateInput = (event) => {
+    let dateInput = event.target.value;
+    console.log(dateInput);
+    setDateInput(dateInput);
   }
 
   // submitting the data to Firebase
   const handleSubmitClick = (event) => {
     event.preventDefault();
     // this is submitting the goal to be appended to the component
-    dbRef.push({ objective: userInput, completed: false });
+    dbRef.push({ objective: userInput, completed: false, date: dateInput });
     // Resetting the input value
     setUserInput('');
   }
@@ -66,7 +75,9 @@ function App() {
       <main className="wrapper">
         <MainForm 
           textInput={userInput}
+          dateInput={dateInput}
           inputResponse={handleUserInput}
+          dateResponse={handleDateInput}
           submitResponse={handleSubmitClick}
         />
 
