@@ -13,7 +13,7 @@ html {
 }
 
 body {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-family: 'Lato', sans-serif;
 }
 
@@ -84,6 +84,10 @@ button:focus {
   cursor: pointer;
 }
 
+.currentDate {
+  text-align: center;
+}
+
 .instructions,
 .mainForm {
   background-color: rgba(221, 206, 226, 0.8);
@@ -96,15 +100,8 @@ button:focus {
   left: 0;
 }
 
-
 .instructions {
   padding: 2rem;
-  position: sticky;
-  top: 3rem;
-}
-
-.instructions:nth-of-type(2) {
-  top: 19rem;
 }
 
 .mainForm {
