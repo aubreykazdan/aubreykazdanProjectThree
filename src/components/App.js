@@ -86,6 +86,7 @@ function App() {
           completeGoal={handleCompleteGoal}
           removeGoal={handleRemoveGoal}
           // <ActivityForm /> exists here
+          // submitResponse
         />
       </main>
 

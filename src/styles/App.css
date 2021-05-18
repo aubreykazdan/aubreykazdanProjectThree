@@ -120,7 +120,7 @@ button:focus {
 
 .goalContainer {
   display: flex;
-  align-self: flex-end;
+  /* align-self: flex-end; */
   border-radius: 20px;
   min-height: 100px;
   background-image: url(../assets/bleak.png);
