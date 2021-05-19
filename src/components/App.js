@@ -1,35 +1,30 @@
 import '../styles/App.css';
-// import '../assets'
 import firebase from '../config/firebase.js';
 import LandingPage from './LandingPage.js';
 import MainForm from './MainForm.js';
 import Goal from './Goal.js';
 import { useEffect, useState } from 'react';
 
-// const apiKey = '';
-
 
 function App() {
   const [ goals, setGoals ] = useState([]);
   const [ userInput, setUserInput ] = useState('');
   const [ dateInput, setDateInput ] = useState('');
+  const [ activityInput, setActivityInput] = useState('');
   const snapshotToArray = snapshot => Object.entries(snapshot).map(e => {
-    console.log(e);
+    // console.log(e);
     return (
       {
         id: e[0],
-        objective: e[1].objective,
+        activities: e[1].activities,
+        completed: e[1].completed,
         date: e[1].date, 
-        completed: e[1].completed
+        objective: e[1].objective
       }) 
   });
 
-  const dbRef = firebase.database().ref(`/goals/`);
-  // console.log(dbRef);
+  const dbRef = firebase.database().ref(`/goals`);
 
-
-
-  
   useEffect(() => {
 
     // referencing our firebase database
@@ -43,7 +38,7 @@ function App() {
 
   const handleUserInput = (event) => {
     let userInput = event.target.value;
-    console.log(userInput);
+    // console.log(userInput);
     setUserInput(userInput);
   }
 
@@ -57,9 +52,28 @@ function App() {
   const handleSubmitClick = (event) => {
     event.preventDefault();
     // this is submitting the goal to be appended to the component
-    dbRef.push({ objective: userInput, completed: false, date: dateInput });
+    dbRef.push({ objective: userInput, completed: false, date: dateInput});
     // Resetting the input value
     setUserInput('');
+  }
+  
+  const handleActivitySubmitClick = (event, key, activityInput) => {
+    event.preventDefault();
+    console.log(key);
+    // this is submitting the goal to be appended to the component
+
+    // THIS WILL ONLY PUSH IF THERE ARE THREE OR LESS ACTIVITIES
+    dbRef.child(`${key}/activities/`).get().then((snapshot) => {
+      let numberOfActivities = Object.keys(snapshot.val()).length;
+      if (numberOfActivities <= 3) {
+        dbRef.child(`${key}/activities/`).push(activityInput);
+      }
+    })
+
+    // dbRef.child(`${key}/activities`).push({activityOne: activityInput, activityTwo: activityInput, activityThree: activityInput});
+
+    // Resetting the input value
+    // setActivityInput('');
   }
   
   const handleCompleteGoal = (goalID) => {
@@ -83,20 +97,23 @@ function App() {
 
       <main className="wrapper">
         <MainForm 
-          textInput={userInput}
+          userInput={userInput}
           dateInput={dateInput}
           inputResponse={handleUserInput}
           dateResponse={handleDateInput}
-          submitResponse={handleSubmitClick}
+          handleSubmitClick={handleSubmitClick}
         />
 
         <Goal 
           goals={goals}
+          dateInput={dateInput}
+          activityInput={activityInput}
           completeGoal={handleCompleteGoal}
           uncompleteGoal={handleUncompleteGoal}
           removeGoal={handleRemoveGoal}
+          // handleActivityInput={handleActivityInput}
+          handleActivitySubmitClick={handleActivitySubmitClick}
           // <ActivityForm /> exists here
-          // submitResponse
         />
       </main>
 
