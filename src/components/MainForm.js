@@ -10,8 +10,9 @@ function MainForm({textInput, dateInput, inputResponse, dateResponse, submitResp
                 <p>Enter Goal Here:</p>
                 <input placeholder="Type here please" value={textInput} type="text" onChange={inputResponse} required/>
 
-                <p>Enter Due Date Here (YYYY-MM-DD):</p>
-                <input placeholder="yyyy-mm-dd" value={dateInput} type="text" name="date" id="date" onChange={dateResponse} required/>
+                <p>OPTIONAL: Enter Due Date Here:</p>
+                <p>(YYYY-MM-DD)</p>
+                <input placeholder="yyyy-mm-dd" value={dateInput} type="text" name="date" id="date" onChange={dateResponse} />
 
                 <button className="addGoal">Add Goal</button>
             </form>

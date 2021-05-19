@@ -1,6 +1,6 @@
 import ActivityForm from "./ActivityForm.js";
 
-function Goal({ goals, completeGoal, uncompleteGoal, removeGoal }) {
+function Goal({ goals, dateInput, completeGoal, uncompleteGoal, removeGoal }) {
   // putting date into a function for later use
   return (
     <section className="goalContainer">
@@ -14,7 +14,12 @@ function Goal({ goals, completeGoal, uncompleteGoal, removeGoal }) {
 
                 <p>{`Goal ${index + 1}: ${goal.objective} ${goal.completed ? '- complete!' : ''}`}</p>
 
-                <p>{`Due Date is ${goal.date}`}</p>
+                {
+                    dateInput !== ''
+                    ? <p>{`Due Date is ${goal.date}`}</p>
+                    : <p></p>
+                }
+                
 
                 <button onClick={() => { removeGoal(goal.id) }}>Remove Goal</button>
 

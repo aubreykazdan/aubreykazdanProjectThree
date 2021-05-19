@@ -92,6 +92,7 @@ function App() {
 
         <Goal 
           goals={goals}
+          dateInput={dateInput}
           completeGoal={handleCompleteGoal}
           uncompleteGoal={handleUncompleteGoal}
           removeGoal={handleRemoveGoal}
