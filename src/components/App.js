@@ -10,7 +10,6 @@ function App() {
   const [ goals, setGoals ] = useState([]);
   const [ userInput, setUserInput ] = useState('');
   const [ dateInput, setDateInput ] = useState('');
-  const [ activityInput, setActivityInput] = useState('');
   const snapshotToArray = snapshot => Object.entries(snapshot).map(e => {
     // console.log(e);
     return (
@@ -26,7 +25,7 @@ function App() {
   const dbRef = firebase.database().ref(`/goals`);
 
   useEffect(() => {
-
+    const dbRef = firebase.database().ref(`/goals`);
     // referencing our firebase database
     dbRef.on('value', (response) => {
       const data = response.val();
