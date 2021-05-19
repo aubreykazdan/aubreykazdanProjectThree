@@ -1,5 +1,4 @@
 import '../styles/App.css';
-// import '../assets'
 import firebase from '../config/firebase.js';
 import LandingPage from './LandingPage.js';
 import MainForm from './MainForm.js';
@@ -11,15 +10,16 @@ function App() {
   const [ goals, setGoals ] = useState([]);
   const [ userInput, setUserInput ] = useState('');
   const [ dateInput, setDateInput ] = useState('');
+  const [ activityInput, setActivityInput] = useState('');
   const snapshotToArray = snapshot => Object.entries(snapshot).map(e => {
-    console.log(e);
+    // console.log(e);
     return (
       {
         id: e[0],
-        objective: e[1].objective,
-        date: e[1].date, 
+        activities: e[1].activities,
         completed: e[1].completed,
-        activities: e[1].activities
+        date: e[1].date, 
+        objective: e[1].objective
       }) 
   });
 
@@ -49,13 +49,28 @@ function App() {
     setDateInput(dateInput);
   }
 
+  const handleActivityInput = (event) => {
+    let activityInput = event.target.value;
+    setActivityInput(activityInput);
+    console.log(activityInput);
+  }
+
   // submitting the data to Firebase
   const handleSubmitClick = (event) => {
     event.preventDefault();
     // this is submitting the goal to be appended to the component
-    dbRef.push({ objective: userInput, completed: false, date: dateInput });
+    dbRef.push({ objective: userInput, completed: false, date: dateInput});
     // Resetting the input value
     setUserInput('');
+  }
+  
+  const handleActivitySubmitClick = (event, key) => {
+    event.preventDefault();
+    // ASK MENTORS ABOUT THIS
+    console.log(key);
+    // this is submitting the goal to be appended to the component
+    dbRef.child(`${key}`).update({activities: activityInput})
+    setActivityInput('');
   }
   
   const handleCompleteGoal = (goalID) => {
@@ -79,21 +94,23 @@ function App() {
 
       <main className="wrapper">
         <MainForm 
-          textInput={userInput}
+          userInput={userInput}
           dateInput={dateInput}
           inputResponse={handleUserInput}
           dateResponse={handleDateInput}
-          submitResponse={handleSubmitClick}
+          handleSubmitClick={handleSubmitClick}
         />
 
         <Goal 
           goals={goals}
           dateInput={dateInput}
+          activityInput={activityInput}
           completeGoal={handleCompleteGoal}
           uncompleteGoal={handleUncompleteGoal}
           removeGoal={handleRemoveGoal}
+          handleActivityInput={handleActivityInput}
+          handleActivitySubmitClick={handleActivitySubmitClick}
           // <ActivityForm /> exists here
-          // submitResponse
         />
       </main>
 

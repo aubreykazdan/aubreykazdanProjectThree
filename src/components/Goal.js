@@ -1,6 +1,6 @@
 import ActivityForm from "./ActivityForm.js";
 
-function Goal({ goals, dateInput, completeGoal, uncompleteGoal, removeGoal }) {  
+function Goal({ goals, dateInput, activityInput, handleActivityInput,  completeGoal, uncompleteGoal, removeGoal, handleActivitySubmitClick }) {  
   return (
     <section className="goalContainer">
       <ul className="healthChecklist">
@@ -9,6 +9,7 @@ function Goal({ goals, dateInput, completeGoal, uncompleteGoal, removeGoal }) {
           goals ? goals.map((goal, index) => {
             // console.log(goal, index);
             return (
+              // ASK MENTORS ABOUT THIS
               <li className={goal.completed ? 'completed' : 'uncompleted'} key={goal.id}>
 
                 <p>{`Goal ${index + 1}: ${goal.objective} ${goal.completed ? '- complete!' : ''}`}</p>
@@ -37,7 +38,12 @@ function Goal({ goals, dateInput, completeGoal, uncompleteGoal, removeGoal }) {
 
 
 
-                <ActivityForm />
+                <ActivityForm
+                  goals={goals} 
+                  activityInput={activityInput}
+                  handleActivityInput={handleActivityInput}
+                  handleActivitySubmitClick={handleActivitySubmitClick}
+                />
               </li>
             )
           }) : <p className="placeholder">Your goals will appear here</p>
