@@ -1,6 +1,6 @@
 import ActivityForm from "./ActivityForm.js";
 
-function Goal({ goals, completeGoal, removeGoal }) {
+function Goal({ goals, completeGoal, uncompleteGoal, removeGoal }) {
   // putting date into a function for later use
   return (
     <section className="goalContainer">
@@ -20,15 +20,21 @@ function Goal({ goals, completeGoal, removeGoal }) {
 
                 <button className={goal.completed ? 'hide' : 'unhide'} onClick={() => {
                   completeGoal(goal.id)
-                  }
                 }
-                >Complete Goal</button>
+                }>Complete Goal</button>
+
+                <button className={goal.completed ? 'unhide' : 'hide'} onClick={() => {
+                  uncompleteGoal(goal.id)
+                }
+                }>Uncomplete Goal</button>
+
+
 
                 <ActivityForm />
               </li>
             )
-        }):<p className="placeholder">Your goals will appear here</p>
-      }
+          }) : <p className="placeholder">Your goals will appear here</p>
+        }
       </ul>
     </section>
   )

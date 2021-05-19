@@ -149,7 +149,7 @@ button:focus {
 }
 
 .completed {
-  border: 1px solid red;
+  background: rgba(201, 145, 132, 0.9)
 }
 
 .hide {

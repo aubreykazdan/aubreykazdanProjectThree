@@ -16,15 +16,20 @@ function App() {
   const snapshotToArray = snapshot => Object.entries(snapshot).map(e => {
     console.log(e);
     return (
-    {
-      id: e[0],
-      objective: e[1].objective,
-      date: e[1].date, 
-      completed: e[1].completed
-    }) 
-    });
+      {
+        id: e[0],
+        objective: e[1].objective,
+        date: e[1].date, 
+        completed: e[1].completed
+      }) 
+  });
+
   const dbRef = firebase.database().ref(`/goals/`);
   // console.log(dbRef);
+
+
+
+  
   useEffect(() => {
 
     // referencing our firebase database
@@ -61,6 +66,10 @@ function App() {
     dbRef.child(goalID).update({completed:true})
   }
 
+  const handleUncompleteGoal = (goalID) => {
+    dbRef.child(goalID).update({completed:false})
+  }
+
   const handleRemoveGoal = (goalID) => {
     // This is the unique ID associated with the goal
     dbRef.child(goalID).remove();
@@ -84,6 +93,7 @@ function App() {
         <Goal 
           goals={goals}
           completeGoal={handleCompleteGoal}
+          uncompleteGoal={handleUncompleteGoal}
           removeGoal={handleRemoveGoal}
           // <ActivityForm /> exists here
           // submitResponse
@@ -98,5 +108,5 @@ function App() {
 export default App;
 
 // ERROR HANDLING LIST
-  // (1) MAKE SURE ADD GOAL CANNOT BE CLICKED WHEN TEXT INPUT IS EMPTY
+  // (1) MAKE SURE DATE TEXT INPUT IS AN ACTUAL DATE
   // (2) 
