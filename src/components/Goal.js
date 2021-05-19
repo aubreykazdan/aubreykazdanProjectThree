@@ -5,11 +5,9 @@ function Goal({ goals, dateInput, activityInput, handleActivityInput,  completeG
     <section className="goalContainer">
       <ul className="healthChecklist">
         {
-          // ASK INSTRUCTORS ABOUT THIS
           goals ? goals.map((goal, index) => {
             // console.log(goal, index);
             return (
-              // ASK MENTORS ABOUT THIS
               <li className={goal.completed ? 'completed' : 'uncompleted'} key={goal.id}>
 
                 <p>{`Goal ${index + 1}: ${goal.objective} ${goal.completed ? '- complete!' : ''}`}</p>
@@ -42,7 +40,7 @@ function Goal({ goals, dateInput, activityInput, handleActivityInput,  completeG
                   goals={goals} 
                   activityInput={activityInput}
                   handleActivityInput={handleActivityInput}
-                  handleActivitySubmitClick={handleActivitySubmitClick}
+                  handleActivitySubmitClick={(event) => handleActivitySubmitClick(event, goal.id)}
                 />
               </li>
             )

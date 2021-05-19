@@ -23,8 +23,7 @@ function App() {
       }) 
   });
 
-  const dbRef = firebase.database().ref(`/goals/`);
-  // console.log(dbRef);
+  const dbRef = firebase.database().ref(`/goals`);
 
   useEffect(() => {
 
@@ -49,12 +48,6 @@ function App() {
     setDateInput(dateInput);
   }
 
-  const handleActivityInput = (event) => {
-    let activityInput = event.target.value;
-    setActivityInput(activityInput);
-    console.log(activityInput);
-  }
-
   // submitting the data to Firebase
   const handleSubmitClick = (event) => {
     event.preventDefault();
@@ -63,13 +56,20 @@ function App() {
     // Resetting the input value
     setUserInput('');
   }
+
+  const handleActivityInput = (event) => {
+    let activityInput = event.target.value;
+    setActivityInput(activityInput);
+    console.log(activityInput);
+  }
   
   const handleActivitySubmitClick = (event, key) => {
     event.preventDefault();
     // ASK MENTORS ABOUT THIS
     console.log(key);
     // this is submitting the goal to be appended to the component
-    dbRef.child(`${key}`).update({activities: activityInput})
+    dbRef.child(key).update({activities: activityInput})
+    // Resetting the input value
     setActivityInput('');
   }
   
