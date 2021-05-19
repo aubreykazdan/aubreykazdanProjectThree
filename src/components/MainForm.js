@@ -4,7 +4,7 @@ function MainForm({userInput, dateInput, inputResponse, dateResponse, handleSubm
 
     return (
         <div className="mainFormContainer">
-            <h2 className="instructions">Input your goals below to see them appear on your Bootcamp to-do list. If you're feeling dangerous, you can also add a due date. The current date will be at the top of this page to remind you that you're doing okay. </h2>
+            <h2 className="instructions">Input your goals below to see them appear on your Bootcamp to-do list. If you're feeling dangerous, you can also add a due date. The current date will be at the top of this page to remind you that you're doing okay. I believe in you. </h2>
 
             <form className="mainForm" action="submit" onSubmit={handleSubmitClick}>
                 <label>Enter Goal Here:</label>
