@@ -57,16 +57,23 @@ function App() {
     setUserInput('');
   }
   
-  const handleActivitySubmitClick = (event, key) => {
+  const handleActivitySubmitClick = (event, key, activityInput) => {
     event.preventDefault();
     console.log(key);
     // this is submitting the goal to be appended to the component
-    dbRef.child(`${key}/activities`).update({activityOne: activityInput, activityTwo: '', activityThree: ''});
+
+    // THIS WILL ONLY PUSH IF THERE ARE THREE OR LESS ACTIVITIES
+    dbRef.child(`${key}/activities/`).get().then((snapshot) => {
+      let numberOfActivities = Object.keys(snapshot.val()).length;
+      if (numberOfActivities <= 3) {
+        dbRef.child(`${key}/activities/`).push(activityInput);
+      }
+    })
 
     // dbRef.child(`${key}/activities`).push({activityOne: activityInput, activityTwo: activityInput, activityThree: activityInput});
 
     // Resetting the input value
-    setActivityInput('');
+    // setActivityInput('');
   }
   
   const handleCompleteGoal = (goalID) => {

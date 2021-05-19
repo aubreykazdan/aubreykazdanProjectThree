@@ -35,13 +35,14 @@ function Goal({ goals, dateInput, activityInput, handleActivityInput,  completeG
                 }>Uncomplete Goal</button>
 
 
-
+{/* 
                 <ActivityForm
-                  goals={goals} 
+                  goals={goals}
+                  id={goal.id} 
                   activityInput={activityInput}
                   handleActivityInput={handleActivityInput}
-                  handleActivitySubmitClick={(event) => handleActivitySubmitClick(event, goal.id)}
-                />
+                  handleActivitySubmitClick={ handleActivitySubmitClick}
+                /> */}
               </li>
             )
           }) : <p className="placeholder">Your goals will appear here</p>
