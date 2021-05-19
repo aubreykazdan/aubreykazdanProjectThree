@@ -6,8 +6,6 @@ import MainForm from './MainForm.js';
 import Goal from './Goal.js';
 import { useEffect, useState } from 'react';
 
-// const apiKey = '';
-
 
 function App() {
   const [ goals, setGoals ] = useState([]);
@@ -20,16 +18,14 @@ function App() {
         id: e[0],
         objective: e[1].objective,
         date: e[1].date, 
-        completed: e[1].completed
+        completed: e[1].completed,
+        activities: e[1].activities
       }) 
   });
 
   const dbRef = firebase.database().ref(`/goals/`);
   // console.log(dbRef);
 
-
-
-  
   useEffect(() => {
 
     // referencing our firebase database
@@ -43,7 +39,7 @@ function App() {
 
   const handleUserInput = (event) => {
     let userInput = event.target.value;
-    console.log(userInput);
+    // console.log(userInput);
     setUserInput(userInput);
   }
 

@@ -1,10 +1,11 @@
+
 function MainForm({textInput, dateInput, inputResponse, dateResponse, submitResponse}) {
-    // const date = new Date(`${year}-${month}-${day} 00:00`)
-    // const isValidDate = (Boolean(+date) && date.getDate() == day)
+
+
     return (
         <div className="mainFormContainer">
-            <p className="instructions">Input your goals below to see them appear on your Bootcamp to-do list. For every goal, you can list 3 activities that will help keep you sane throughout the upcoming nine weeks of madness.</p>
-            <p className="instructions">IMPORTANT: you cannot complete a goal until you have completed every activity associated with said goal. Accountibility is key. 🔑🔑🔑</p>
+            <h2 className="instructions">Input your goals below to see them appear on your Bootcamp to-do list. For every goal, you can list 3 activities that will help keep you sane throughout the upcoming nine weeks of madness.</h2>
+            <h2 className="instructions">IMPORTANT: you cannot complete a goal until you have completed every activity associated with said goal. Accountibility is key. 🔑🔑🔑</h2>
 
             <form className="mainForm" action="submit" onSubmit={submitResponse}>
                 <p>Enter Goal Here:</p>
@@ -21,3 +22,6 @@ function MainForm({textInput, dateInput, inputResponse, dateResponse, submitResp
 }
 
 export default MainForm
+
+// const date = new Date(`${year}-${month}-${day} 00:00`)
+// const isValidDate = (Boolean(+date) && date.getDate() == day)
