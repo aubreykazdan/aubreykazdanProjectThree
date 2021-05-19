@@ -1,6 +1,4 @@
-import ActivityForm from "./ActivityForm.js";
-
-function Goal({ goals, dateInput, activityInput, handleActivityInput,  completeGoal, uncompleteGoal, removeGoal, handleActivitySubmitClick }) {  
+function Goal({ goals, dateInput,  completeGoal, uncompleteGoal, removeGoal }) {  
   return (
     <section className="goalContainer">
       <ul className="healthChecklist">
@@ -33,16 +31,6 @@ function Goal({ goals, dateInput, activityInput, handleActivityInput,  completeG
                   uncompleteGoal(goal.id)
                 }
                 }>Uncomplete Goal</button>
-
-
-{/* 
-                <ActivityForm
-                  goals={goals}
-                  id={goal.id} 
-                  activityInput={activityInput}
-                  handleActivityInput={handleActivityInput}
-                  handleActivitySubmitClick={ handleActivitySubmitClick}
-                /> */}
               </li>
             )
           }) : <p className="placeholder">Your goals will appear here</p>

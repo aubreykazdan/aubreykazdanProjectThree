@@ -111,7 +111,7 @@ button:focus {
 
 .mainForm {
   position: sticky;
-  top: 33rem;
+  top: 30rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -119,13 +119,16 @@ button:focus {
   max-width: 1000px;
 }
 
-.addGoal {
+.dueDateText {
+  margin: 1rem ;
+}
+
+.addGoalButton {
   margin-top: 1.5rem;
 }
 
 .goalContainer {
   display: flex;
-  /* align-self: flex-end; */
   border-radius: 20px;
   min-height: 100px;
   background-image: url(../assets/bleak.png);
@@ -164,39 +167,4 @@ button:focus {
 
 .unhide {
   display: inline-block;
-}
-
-.activityFormContainer {
-  background: rgba(221, 206, 226, 0.8);
-  border-radius: 20px;
-  padding: 2rem 2rem;
-  margin: 1rem;
-}
-
-.activityFormOne,
-.activityFormTwo,
-.activityFormThree{
-  display: flex;
-}
-
-.activitiesContainer {
-  display: flex;
-  justify-content: center;
-}
-
-.activity {
-  display: flex;
-  flex-direction: column;
-  align-items: space-between;
-  background: rgba(100, 206, 95, 0.79);
-  border-radius: 20px;
-  padding: 0.5rem 1rem;
-  margin: 1rem 1rem 0 1rem;
-  font-size: 1.3rem;
-}
-
-.activityButton {
-  font-size: 1rem;
-  padding: 0.5rem;
-  margin: 0;
 }
