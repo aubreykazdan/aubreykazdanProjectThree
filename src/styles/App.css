@@ -173,7 +173,9 @@ button:focus {
   margin: 1rem;
 }
 
-.activityForm {
+.activityFormOne,
+.activityFormTwo,
+.activityFormThree{
   display: flex;
 }
 

@@ -1,19 +1,39 @@
-// import firebase from '../config/firebase.js';
-// import { useState } from 'react';
+import firebase from '../config/firebase.js';
+import { useState } from 'react';
 
-function ActivityForm({goals, activityInput, handleActivityInput, handleActivitySubmitClick}) {
-    // const dbRef = firebase.database().ref(`/goals`);
-    // const [ activityInput, setActivityInput] = useState('');
+function ActivityForm({goals, handleActivitySubmitClick}) {
+    const dbRef = firebase.database().ref(`/goals`);
+    const [ activityInput, setActivityInput] = useState('');
 
-
+    const handleActivityInput = (event) => {
+        let activityInput = event.target.value;
+        setActivityInput(activityInput);
+        console.log(activityInput);
+      }
 
     return (
         <div className="activityFormContainer">
-            <form className="activityForm activityOne" action="submit" onSubmit={handleActivitySubmitClick}>
+
+            {/* THIS IS ACTIVITY 1 FORM */}
+            <form className="activityFormOne" action="submit" onSubmit={handleActivitySubmitClick}>
                 <label htmlFor="">Enter Activity Here:</label>
                 <input placeholder="Type here please" value={activityInput} type="text" onChange={handleActivityInput}/>
                 <button className="activityButtonOne">Add Activity</button>
             </form>
+
+            {/* THIS IS ACTIVITY 2 FORM */}
+            {/* <form className="hide" action="submit" onSubmit={handleActivitySubmitClick}>
+                <label htmlFor="">Enter Activity Here:</label>
+                <input placeholder="Type here please" value={activityInput} type="text" onChange={handleActivityInput}/>
+                <button className="activityButtonOne">Add Activity</button>
+            </form> */}
+
+            {/* THIS IS ACTIVITY 3 FORM */}
+            {/* <form className="hide" action="submit" onSubmit={handleActivitySubmitClick}>
+                <label htmlFor="">Enter Activity Here:</label>
+                <input placeholder="Type here please" value={activityInput} type="text" onChange={handleActivityInput}/>
+                <button className="activityButtonOne">Add Activity</button>
+            </form> */}
 
             
         <ul className="activitiesContainer">
@@ -22,7 +42,7 @@ function ActivityForm({goals, activityInput, handleActivityInput, handleActivity
                     // console.log(goal, index);
                     return (
                         <li className="activity" key={goal.id}>
-                            <p>{`Activity ${index +1}: ${goal.activities}`}</p>
+                            <p>{`Activity ${index +1}: ${goal.id.activityOne}`}</p>
                             <button className="activityButton">✅</button>
                             <button className="activityButton">❎</button>
                         </li>

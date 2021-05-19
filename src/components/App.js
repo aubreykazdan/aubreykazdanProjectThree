@@ -56,19 +56,15 @@ function App() {
     // Resetting the input value
     setUserInput('');
   }
-
-  const handleActivityInput = (event) => {
-    let activityInput = event.target.value;
-    setActivityInput(activityInput);
-    console.log(activityInput);
-  }
   
   const handleActivitySubmitClick = (event, key) => {
     event.preventDefault();
-    // ASK MENTORS ABOUT THIS
     console.log(key);
     // this is submitting the goal to be appended to the component
-    dbRef.child(key).update({activities: activityInput})
+    dbRef.child(`${key}/activities`).update({activityOne: activityInput, activityTwo: '', activityThree: ''});
+
+    // dbRef.child(`${key}/activities`).push({activityOne: activityInput, activityTwo: activityInput, activityThree: activityInput});
+
     // Resetting the input value
     setActivityInput('');
   }
@@ -108,7 +104,7 @@ function App() {
           completeGoal={handleCompleteGoal}
           uncompleteGoal={handleUncompleteGoal}
           removeGoal={handleRemoveGoal}
-          handleActivityInput={handleActivityInput}
+          // handleActivityInput={handleActivityInput}
           handleActivitySubmitClick={handleActivitySubmitClick}
           // <ActivityForm /> exists here
         />
