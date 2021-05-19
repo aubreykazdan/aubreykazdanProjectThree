@@ -35,6 +35,8 @@ function Goal({ goals, dateInput, activityInput, handleActivityInput,  completeG
                 }>Uncomplete Goal</button>
 
 
+
+                {/* THIS WHOLE SECTION IS FOR LATER */}
 {/* 
                 <ActivityForm
                   goals={goals}
