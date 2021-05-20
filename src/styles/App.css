@@ -125,7 +125,7 @@ button:focus {
 
 .allGoalsContainer {
   border-radius: 20px;
-  background-image: url(../assets/bleak.png);
+  background-image: url(../assets/record2.png);
   background-repeat: no-repeat;
   background-size: cover;
   margin: 1.5rem 2rem;
@@ -151,8 +151,9 @@ button:focus {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 15rem 1rem 0 1rem;
   min-height: 100px;
-  min-width: 380px;
+  min-width: 300px;
   background:rgba(248, 249, 249, 0.9);
   border-radius: 20px;
 }
@@ -183,10 +184,6 @@ button:focus {
 /* MEDIA QUERIES START HERE */
 
 @media only screen and (max-width: 790px) {
-  body {
-    background-color: skyblue;
-  }
-
   .mainFormContainer {
     margin-right: 2rem
   }
@@ -198,6 +195,7 @@ button:focus {
   .placeholderGoal {
     min-height: 50px;
     min-width: 100px;
+    margin: 18rem 1rem 0 1rem;
   }
 
   .completed,
@@ -211,9 +209,6 @@ button:focus {
 }
 
 @media only screen and (max-width: 450px) {
-  body {
-    background-color: red;
-  }
 
   input {
     padding: 0.5rem;
@@ -236,6 +231,10 @@ button:focus {
 
  .allGoalsContainer {
    margin: 1.5rem 0 0 0;
+ }
+
+ .placeholderGoal {
+  margin: 30rem 1rem 0 1rem;
  }
 
  .completed,
