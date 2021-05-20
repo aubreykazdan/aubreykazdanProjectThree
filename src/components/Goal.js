@@ -1,21 +1,20 @@
 function Goal({ goals, dateInput,  completeGoal, uncompleteGoal, removeGoal }) {  
   return (
-    <section className="goalContainer">
-      <ul className="healthChecklist">
+    <section className="allGoalsContainer">
+      <ul className="goalContainer">
         {
           goals ? goals.map((goal, index) => {
-            // console.log(goal, index);
             return (
               <li className={goal.completed ? 'completed' : 'uncompleted'} key={goal.id}>
 
-                <p>{`Goal ${index + 1}: ${goal.objective} ${goal.completed ? '- complete!' : ''}`}</p>
+                <p className="goalHeader">{`Goal ${index + 1}: ${goal.objective} ${goal.completed ? '- complete!' : ''}`}</p>
 
-                {/* THIS TERNARY WILL ADD DUE DATE ONLY IF DATE TEXT INPUT IS NOT BLANK */}
-                {
-                    dateInput !== ''
-                    ? <p>{`Due Date is ${goal.date}`}</p>
-                    : <p></p>
-                }
+              {/* THIS TERNARY WILL ADD DUE DATE ONLY IF DATE TEXT INPUT IS NOT BLANK */}
+              {
+                  goal.date !== ''
+                  ? <p className="dueDate">{`Due Date is ${goal.date}`}</p>
+                  : <p></p>
+              }
                 
                 {/* THIS BUTTON REMOVES ENTIRE GOAL AREA */}
                 <button onClick={() => { removeGoal(goal.id) }}>Remove Goal</button>
@@ -33,7 +32,7 @@ function Goal({ goals, dateInput,  completeGoal, uncompleteGoal, removeGoal }) {
                 }>Uncomplete Goal</button>
               </li>
             )
-          }) : <p className="placeholder">Your goals will appear here</p>
+          }) : <p className="placeholderGoal">Your goals will appear here</p>
         }
       </ul>
     </section>

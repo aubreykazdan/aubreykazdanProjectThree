@@ -36,6 +36,12 @@ header {
 h1 {
   font-size: 4rem;
   font-family: 'Manrope', sans-serif;
+  text-align: center;
+}
+
+.currentDate {
+  text-align: center;
+  font-size: 2rem;
 }
 
 h2 {
@@ -48,18 +54,8 @@ ul {
   padding: 0;
 }
 
-li .completed,
-li .uncomplted {
-  background: rgba(248, 249, 249, 0.8);
-  border-radius: 40px;
-  padding: 2rem 3rem;
-  margin: 3rem;
-  min-height: 100px;
-  min-width: 380px;
-}
-
 footer {
-  padding-top: 4rem;
+  padding-top: 45rem;
   height: 10vh;
   display: flex;
   justify-content: center;
@@ -89,8 +85,8 @@ button:focus {
   cursor: pointer;
 }
 
-.currentDate {
-  text-align: center;
+.mainFormContainer {
+  margin-right: 5rem
 }
 
 .instructions,
@@ -102,11 +98,11 @@ button:focus {
 .instructions,
 .mainForm {
   max-width: 400px;
-  left: 0;
 }
 
 .instructions {
   padding: 2rem;
+  line-height: 2.5rem;
 }
 
 .mainForm {
@@ -115,11 +111,11 @@ button:focus {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem 2rem;
-  max-width: 1000px;
+  padding: 1.5rem;
 }
 
-.dueDateText {
+.enterGoalLabel,
+.dueDateLabel {
   margin: 1rem ;
 }
 
@@ -127,23 +123,39 @@ button:focus {
   margin-top: 1.5rem;
 }
 
-.goalContainer {
-  display: flex;
+.allGoalsContainer {
   border-radius: 20px;
-  min-height: 100px;
-  background-image: url(../assets/bleak.png);
+  background-image: url(../assets/record2.png);
   background-repeat: no-repeat;
   background-size: cover;
-  margin: 2rem;
+  margin: 1.5rem 2rem;
 }
 
-.placeholder {
+.goalContainer li{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.goalHeader,
+.dueDate {
+  text-align: center;
+}
+
+.goalHeader {
+  margin: 0;
+}
+
+.placeholderGoal {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 15rem 1rem 0 1rem;
   min-height: 100px;
-  min-width: 380px;
-  background:rgba(221, 206, 226, 0.8);
+  min-width: 300px;
+  background:rgba(248, 249, 249, 0.9);
+  border-radius: 20px;
 }
 
 /* These target the goal containers when goal is completed or uncompleted */
@@ -167,4 +179,71 @@ button:focus {
 
 .unhide {
   display: inline-block;
+}
+
+/* MEDIA QUERIES START HERE */
+
+@media only screen and (max-width: 790px) {
+  .mainFormContainer {
+    margin-right: 2rem
+  }
+
+  .allGoalsContainer {
+    margin-right: 0;
+  }
+
+  .placeholderGoal {
+    min-height: 50px;
+    min-width: 100px;
+    margin: 18rem 1rem 0 1rem;
+  }
+
+  .completed,
+  .uncompleted {
+    margin: 1rem 1rem 0 1rem;
+    padding: 0.5rem;
+    min-height: 0;
+    min-width: 0;
+  }
+  
+}
+
+@media only screen and (max-width: 450px) {
+
+  input {
+    padding: 0.5rem;
+  }
+
+  .wrapper {
+    width: 100%;
+    max-width: 450px;
+  }
+
+ .mainFormContainer {
+   margin: 0;
+   max-width: 180px;
+ }
+
+ .mainForm {
+   /* to keep the mainform position stickied in the middle */
+   top: 22rem;
+ }
+
+ .allGoalsContainer {
+   margin: 1.5rem 0 0 0;
+ }
+
+ .placeholderGoal {
+  margin: 30rem 1rem 0 1rem;
+ }
+
+ .completed,
+ .uncompleted {
+   max-height: 300px;
+   max-width: 200px;
+ }
+
+ footer {
+   padding-top: 30rem;
+ }
 }

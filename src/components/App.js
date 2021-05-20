@@ -11,7 +11,6 @@ function App() {
   const [ userInput, setUserInput ] = useState('');
   const [ dateInput, setDateInput ] = useState('');
   const snapshotToArray = snapshot => Object.entries(snapshot).map(e => {
-    // console.log(e);
     return (
       {
         id: e[0],
@@ -37,13 +36,11 @@ function App() {
 
   const handleUserInput = (event) => {
     let userInput = event.target.value;
-    // console.log(userInput);
     setUserInput(userInput);
   }
 
   const handleDateInput = (event) => {
     let dateInput = event.target.value;
-    console.log(dateInput);
     setDateInput(dateInput);
   }
 
@@ -53,7 +50,7 @@ function App() {
     // this is submitting the goal to be appended to the component
     dbRef.push({ objective: userInput, completed: false, date: dateInput});
     // Resetting the input value
-    setUserInput('');
+    setUserInput('')  
   }
   
   const handleCompleteGoal = (goalID) => {
@@ -86,20 +83,15 @@ function App() {
 
         <Goal 
           goals={goals}
-          dateInput={dateInput}
           completeGoal={handleCompleteGoal}
           uncompleteGoal={handleUncompleteGoal}
           removeGoal={handleRemoveGoal}
         />
       </main>
 
-      <footer>Created by Aubrey Kazdan - Juno College 2021</footer>
+      <footer>Created by Aubrey Kazdan - <a href="https://junocollege.com/">Juno College</a> - 2021</footer>
     </>
   );
 }
 
 export default App;
-
-// ERROR HANDLING LIST
-  // (1) MAKE SURE DATE TEXT INPUT IS AN ACTUAL DATE
-  // (2) 
