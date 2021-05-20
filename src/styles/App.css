@@ -55,7 +55,7 @@ ul {
 }
 
 footer {
-  padding-top: 4rem;
+  padding-top: 45rem;
   height: 10vh;
   display: flex;
   justify-content: center;
@@ -98,11 +98,11 @@ button:focus {
 .instructions,
 .mainForm {
   max-width: 400px;
-  left: 0;
 }
 
 .instructions {
   padding: 2rem;
+  line-height: 2.5rem;
 }
 
 .mainForm {
@@ -153,7 +153,8 @@ button:focus {
   align-items: center;
   min-height: 100px;
   min-width: 380px;
-  background:rgba(221, 206, 226, 0.8);
+  background:rgba(248, 249, 249, 0.9);
+  border-radius: 20px;
 }
 
 /* These target the goal containers when goal is completed or uncompleted */
@@ -195,8 +196,8 @@ button:focus {
   }
 
   .placeholderGoal {
-    min-height: 0;
-    min-width: 0;
+    min-height: 50px;
+    min-width: 100px;
   }
 
   .completed,
@@ -209,31 +210,41 @@ button:focus {
   
 }
 
-@media only screen and (max-width: 570px) {
+@media only screen and (max-width: 450px) {
   body {
     background-color: red;
   }
 
+  input {
+    padding: 0.5rem;
+  }
+
   .wrapper {
     width: 100%;
-    max-width: 570px;
+    max-width: 450px;
   }
 
  .mainFormContainer {
-   /* margin: 0 0 0 5rem */
    margin: 0;
-   max-height: 150px;
    max-width: 180px;
  }
 
+ .mainForm {
+   /* to keep the mainform position stickied in the middle */
+   top: 22rem;
+ }
+
  .allGoalsContainer {
-   /* margin-right: 5rem; */
    margin: 1.5rem 0 0 0;
  }
 
  .completed,
  .uncompleted {
-   max-height: 150px;
-   max-width: 180px;
+   max-height: 300px;
+   max-width: 200px;
+ }
+
+ footer {
+   padding-top: 30rem;
  }
 }
