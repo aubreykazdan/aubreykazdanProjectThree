@@ -8,6 +8,9 @@ html{line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}bo
 
 .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; border: 0; padding: 0; white-space: nowrap; clip-path: inset(100%); clip: rect(0 0 0 0); overflow: hidden;}
 
+/* STYLINGS START HERE */
+  /* Styling are in order of use/appearance */
+
 html {
   font-size: 62.5%;
 }
@@ -23,6 +26,7 @@ body {
   margin: 0 auto;
 }
 
+/* THIS FLEXES THE MAIN FORM AND GOAL COMPONENTS SIDE BY SIDE */
 main {
   display: flex;
   justify-content: center;
@@ -42,25 +46,6 @@ h1 {
 .currentDate {
   text-align: center;
   font-size: 2rem;
-}
-
-h2 {
-  font-size: 1.6rem;
-}
-
-ul {
-  list-style: none;
-  /* to prevent default padding */
-  padding: 0;
-}
-
-footer {
-  padding-top: 45rem;
-  height: 10vh;
-  display: flex;
-  justify-content: center;
-  align-self: flex-end;
-  color: black;
 }
 
 input {
@@ -84,6 +69,8 @@ button:focus {
   background: black;
   cursor: pointer;
 }
+
+
 
 .mainFormContainer {
   margin-right: 5rem
@@ -114,6 +101,7 @@ button:focus {
   padding: 1.5rem;
 }
 
+
 .enterGoalLabel,
 .dueDateLabel {
   margin: 1rem ;
@@ -136,6 +124,12 @@ button:focus {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+ul {
+  /* to prevent default styling and padding */
+  list-style: none;
+  padding: 0;
 }
 
 .goalHeader,
@@ -169,10 +163,12 @@ button:focus {
   min-width: 380px;
 }
 
+/* this styling gives a visual change to the list element containing the completed goal */
 .completed {
-  background: rgba(201, 145, 132, 0.9)
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(236,142,38,1) 0%, rgba(0,212,255,1) 100%);
 }
 
+/* hide and unhide classes are toggled when completed button is toggled vs. uncompleted button */
 .hide {
   display: none;
 }
@@ -180,6 +176,25 @@ button:focus {
 .unhide {
   display: inline-block;
 }
+
+footer {
+  padding-top: 45rem;
+  margin-bottom: 3rem;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-self: flex-end;
+  color: black;
+}
+
+/* this styling is specific to Juno college link in footer */
+a {
+  font-size: 1.8rem;
+  text-decoration: underline;
+  color:rgba(0, 0, 0, 1);
+}
+
+
 
 /* MEDIA QUERIES START HERE */
 
@@ -209,7 +224,6 @@ button:focus {
 }
 
 @media only screen and (max-width: 450px) {
-
   input {
     padding: 0.5rem;
   }
